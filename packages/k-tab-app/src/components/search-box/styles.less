@@ -1,0 +1,119 @@
+.k-tab-search-container {
+    width: 100%;
+    position: relative;
+    
+    .k-tab-search-box {
+        max-width: 600px;
+        margin: 30px auto 15px;
+        height: 48px;
+        border-radius: var(--search-radius);
+        box-shadow: 0 0 10px 3px #00000029;
+        backdrop-filter: blur(14px);
+        transition: .2s;
+        display: flex;
+        background-color: var(--search-bg);
+
+        .k-tab-search-engine {
+            flex: 0 0 50px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: .2s;
+            cursor: pointer;
+            border-radius: var(--search-radius);
+            overflow: hidden;
+
+            &:hover {
+                background-color: #fff;
+            }
+
+            .anticon {
+                font-size: 18px;
+            }
+        }
+
+        .k-tab-search-icon {
+            flex: 0 0 50px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: .2s;
+            cursor: pointer;
+            border-radius: var(--search-radius);
+            overflow: hidden;
+
+            &:hover {
+                background-color: #fff;
+            }
+
+            .anticon-search {
+                color: #939393;
+                font-size: 18px;
+            }
+        }
+
+        .k-tab-search-input-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+
+            .k-tab-search-input {
+                background-color: transparent;
+                border: none;
+                outline: none;
+
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+        }
+        
+
+        .k-tab-engine-list-container {
+            display: none;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 10px;
+            transform: translateY(100%);
+            z-index: 1;
+            background-color: transparent;
+
+            &.show {
+                display: block;
+            }
+
+            .k-tab-engine-list {
+                display: flex;
+                justify-content: center;
+
+                li {
+                    width: 93px;
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: var(--search-bg);
+                    border-radius: var(--search-radius);
+                    cursor: pointer;
+
+                    .anticon {
+                        font-size: 24px;
+
+                        &.anticon-plus {
+                            font-size: 18px;
+                            color: var(--primary-color);
+                        }
+                    }
+
+                    &:not(:first-child) {
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
