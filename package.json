@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "devDependencies": {
-    "@types/node": "^17.0.13"
-  },
+  "devDependencies": {},
   "scripts": {
     "start": "node ./scripts/start.mjs"
   }
