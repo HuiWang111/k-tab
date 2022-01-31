@@ -1,9 +1,14 @@
+/*
+ * @Autor: hui.wang
+ * @Date: 2022-01-28 14:31:51
+ * @LastEditors: hui.wang
+ * @LastEditTime: 2022-01-31 13:58:07
+ * @emial: hui.wang@bizfocus.cn
+ */
 import axios, { AxiosInstance, AxiosError } from 'axios'
 import { message } from 'antd'
 import { STATUS_CODE_MAP, RESPONSE_CODE_MAP } from 'consts'
-import { history } from 'app/history'
-import { store } from 'app/appContext'
-import { AuthStore } from 'stores'
+import { baseURL } from 'config'
 
 const HTTP_PRIVATE_KEY = 'HTTP_PRIVATE_KEY'
 interface IHttpErrorInstance {
@@ -49,7 +54,7 @@ export class HttpError implements IHttpErrorInstance {
 
 export class Http {
     client: AxiosInstance = axios.create({
-        baseURL: '',
+        baseURL,
         timeout: 1000,
         headers: {}
     })
@@ -74,12 +79,6 @@ export class Http {
                     }
                     case 401: {
                         message.error(msg)
-                        store.auth.setAuthed(false)
-                        store.auth.setCurrentUser(undefined)
-                        AuthStore.removeToken()
-                        history.replace({
-                            pathname: '/login'
-                        })
                         return
                     }
                     default: {

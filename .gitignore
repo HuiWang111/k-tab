@@ -21,3 +21,5 @@ coverage
 *.log
 
 yarn-error.log
+
+packages/k-tab-server/src/config.ts

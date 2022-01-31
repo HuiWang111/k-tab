@@ -3,6 +3,8 @@
     height: 100vh;
     overflow: hidden;
     position: relative;
+    display: flex;
+    flex-direction: column;
 
     .k-tab-bg {
         position: absolute;
@@ -13,5 +15,23 @@
         background: url(/src/assets/images/bg.jpg);
         filter: blur(24px);
         z-index: -1;
+    }
+
+    .swiper {
+        flex: 1;
+        max-width: var(--main-content-max-width);
+        min-width: var(--main-content-min-width);
+        margin: 0 auto;
+        
+        .swiper-slide {
+            width: 100%;
+        }
+    }
+
+    .k-tab-quotations {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        text-align: center;
+        color: #fff;
     }
 }

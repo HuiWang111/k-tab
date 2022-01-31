@@ -1,0 +1,46 @@
+.k-tab-sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: var(--sidebar-width);
+    z-index: 2;
+    background-color: rgba(37, 35, 34, .5);
+    transition: .1s;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    padding: 60px 0 30px;
+
+    &-header {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        height: 55px;
+        margin-bottom: 10px;
+        cursor: pointer;
+
+        .anticon {
+            font-size: 30px;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+    }
+
+    &-content {
+        flex: 1;
+    }
+
+    &-footer {
+        display: flex;
+        flex-direction: column;
+
+        .anticon {
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+}
