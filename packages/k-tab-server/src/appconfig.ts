@@ -2,11 +2,11 @@
  * @Autor: hui.wang
  * @Date: 2022-01-30 21:08:23
  * @LastEditors: hui.wang
- * @LastEditTime: 2022-01-30 21:09:52
+ * @LastEditTime: 2022-01-31 17:25:53
  * @emial: hui.wang@bizfocus.cn
  */
 import { createConnection } from 'typeorm'
-import { mysql, server } from './config'
+import { mysql, server, github } from './config'
 // import { Services } from './service'
 
 // const services = new Services(mysql.db)
@@ -36,3 +36,5 @@ export {
     // services,
     initialize
 }
+
+export const githubConfig = github
