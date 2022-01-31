@@ -2,7 +2,7 @@
  * @Autor: hui.wang
  * @Date: 2022-01-30 19:37:05
  * @LastEditors: hui.wang
- * @LastEditTime: 2022-01-30 19:54:29
+ * @LastEditTime: 2022-01-31 20:32:41
  * @emial: hui.wang@bizfocus.cn
  */
 import { exec as execute } from 'child_process'

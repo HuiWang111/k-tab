@@ -1,3 +1,10 @@
+/*
+ * @Autor: hui.wang
+ * @Date: 2022-01-28 14:31:49
+ * @LastEditors: hui.wang
+ * @LastEditTime: 2022-01-31 20:53:53
+ * @emial: hui.wang@bizfocus.cn
+ */
 export interface IAuthError {
     message: string;
 }
@@ -15,6 +22,5 @@ export interface IAuth {
 }
 
 export interface ILoginData {
-    username: string;
-    password: string;
+    code: string;
 }

@@ -2,7 +2,7 @@
  * @Autor: hui.wang
  * @Date: 2022-01-29 21:52:17
  * @LastEditors: hui.wang
- * @LastEditTime: 2022-01-31 16:11:46
+ * @LastEditTime: 2022-01-31 21:41:34
  * @emial: hui.wang@bizfocus.cn
  */
 import { FC } from 'react'
@@ -11,15 +11,25 @@ import { observer } from 'mobx-react-lite'
 import { useServices, useMount, useVisible } from 'hooks'
 import { A11y, Mousewheel } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { URLMergeQuery, parseCurrentQuery } from 'utils'
 import 'swiper/css'
 import './styles.less'
 
 export const Home: FC = observer(() => {
-    const { searchService } = useServices()
+    const { searchService, authService } = useServices()
     const [loginModalVisible, showLoginModal, hideLoginModal] = useVisible(true)
 
     useMount(() => {
         searchService.fetchEngines()
+        getGithubUserInfo()
+
+        async function getGithubUserInfo() {
+            const { code } = parseCurrentQuery()
+
+            if (code) {
+                authService.fetchGithubUser({ code })
+            }
+        }
     })
 
     return (
@@ -57,6 +67,14 @@ export const Home: FC = observer(() => {
                         visible={loginModalVisible}
                         onCancel={hideLoginModal}
                         description='k-tab仅支持第三方登录，请选择登录方式'
+                        loginModes={[
+                            {
+                                icon: 'icon-GitHub',
+                                url: URLMergeQuery('https://github.com/login/oauth/authorize', {
+                                    'client_id': '045a87fab775b2c2df39'
+                                })
+                            }
+                        ]}
                     />
                 )
             }

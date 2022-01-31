@@ -1,56 +1,39 @@
-interface ITidyDataOptions {
-    removeEmptyArray?: boolean;
-}
-
-const defaultTidyOptions: ITidyDataOptions = {
-    removeEmptyArray: true
-}
-
-export const tidyData = (
-    data?: Record<string, any> | null | undefined,
-    {
-        removeEmptyArray = true
-    }: ITidyDataOptions = defaultTidyOptions
-): Record<string, any> => {
-    if (!data) {
-        return {}
-    }
-
-    const res = Object.assign({}, data)
-
-    for (const key in res) {
-        const typeofRes = typeof res[key]
-        if (res[key] == null) {
-            delete res[key]
-        } else if (typeofRes === 'string') {
-            const value = data[key].trim()
-            if (!value.length) {
-                delete res[key]
-            } else {
-                res[key] = value
-            }
-        } else if (Array.isArray(res[key])) {
-            if (!res[key].length && removeEmptyArray) {
-                delete res[key]
-            }
+/*
+ * @Autor: hui.wang
+ * @Date: 2022-01-28 14:31:51
+ * @LastEditors: hui.wang
+ * @LastEditTime: 2022-01-31 20:49:37
+ * @emial: hui.wang@bizfocus.cn
+ */
+export function URLMergeQuery(url: string, data: Record<string, any>): string {
+    let qs = ''
+    for (const key in data) {
+        const value = data[key]
+        if (!value || !key) {
+            continue
         }
+
+        qs += qs
+            ? `&${key}=${value}`
+            : `${key}=${value}`
     }
 
-    return res
+    return qs
+        ? url + '?' + qs
+        : url
 }
 
-export const omit = (object: Record<string, any>, omitKeys?: string[]): Record<string, any> => {
-    if (!omitKeys || !omitKeys.length) {
-        return object
-    }
+export function parseCurrentQuery(): Record<string, string> {
+    const search = window.location.search.slice(1)
 
-    const res: Record<string, any> = {}
-    const set = new Set(omitKeys)
-    for (const key in object) {
-        if (!set.has(key)) {
-            res[key] = object[key]
-        }
-    }
+    const reg = /([^&=]+)(=([^&=]*))?/g
+    let p: RegExpExecArray | null
+    const object: Record<string, string> = {}
 
-    return res
+    while ((p = reg.exec(search))) {
+        const [, key, , value] = p
+        object[key] = value
+    }
+    
+    return object
 }

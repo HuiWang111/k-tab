@@ -2,7 +2,7 @@
  * @Autor: hui.wang
  * @Date: 2022-01-28 14:54:47
  * @LastEditors: hui.wang
- * @LastEditTime: 2022-01-30 19:16:00
+ * @LastEditTime: 2022-01-31 22:19:01
  * @emial: hui.wang@bizfocus.cn
  */
 import { defineConfig } from 'vite'
@@ -48,6 +48,15 @@ export default defineConfig({
         preprocessorOptions: {
             less: {
                 javascriptEnabled: true
+            }
+        }
+    },
+    server: {
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3001',
+                changeOrigin: true,
+                rewrite: path => path.replace(/^\/api/, '')
             }
         }
     }
