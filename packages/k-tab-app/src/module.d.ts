@@ -2,7 +2,7 @@
  * @Autor: hui.wang
  * @Date: 2022-01-28 14:31:49
  * @LastEditors: hui.wang
- * @LastEditTime: 2022-01-30 17:30:06
+ * @LastEditTime: 2022-02-01 19:35:11
  * @emial: hui.wang@bizfocus.cn
  */
 declare module '*.jpeg';

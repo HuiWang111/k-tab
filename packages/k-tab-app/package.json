@@ -22,6 +22,7 @@
         "swiper": "^7.4.1"
     },
     "devDependencies": {
+        "@types/chrome": "^0.0.177",
         "@types/jest": "^26.0.23",
         "@types/js-cookie": "^2.2.6",
         "@types/react": "^16.9.38",

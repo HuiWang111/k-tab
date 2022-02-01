@@ -2,7 +2,7 @@
  * @Autor: hui.wang
  * @Date: 2022-01-28 14:54:47
  * @LastEditors: hui.wang
- * @LastEditTime: 2022-01-31 22:19:01
+ * @LastEditTime: 2022-02-01 21:27:33
  * @emial: hui.wang@bizfocus.cn
  */
 import { defineConfig } from 'vite'

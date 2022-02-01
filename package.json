@@ -5,6 +5,9 @@
   "license": "MIT",
   "devDependencies": {},
   "scripts": {
-    "start": "node ./scripts/start.mjs"
+    "build-client": "node ./scripts/build-client.mjs"
+  },
+  "dependencies": {
+    "chalk": "^5.0.0"
   }
 }

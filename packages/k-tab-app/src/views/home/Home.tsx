@@ -2,7 +2,7 @@
  * @Autor: hui.wang
  * @Date: 2022-01-29 21:52:17
  * @LastEditors: hui.wang
- * @LastEditTime: 2022-01-31 21:41:34
+ * @LastEditTime: 2022-02-01 19:59:35
  * @emial: hui.wang@bizfocus.cn
  */
 import { FC } from 'react'
@@ -16,12 +16,13 @@ import 'swiper/css'
 import './styles.less'
 
 export const Home: FC = observer(() => {
-    const { searchService, authService } = useServices()
-    const [loginModalVisible, showLoginModal, hideLoginModal] = useVisible(true)
+    const { searchService, authService, chromeService } = useServices()
+    const [loginModalVisible, showLoginModal, hideLoginModal] = useVisible(false)
 
     useMount(() => {
         searchService.fetchEngines()
         getGithubUserInfo()
+        chromeService.getBookmarks()
 
         async function getGithubUserInfo() {
             const { code } = parseCurrentQuery()
@@ -59,7 +60,7 @@ export const Home: FC = observer(() => {
                 <SwiperSlide>Slide 3</SwiperSlide>
                 <SwiperSlide>Slide 4</SwiperSlide>
             </Swiper>
-            <footer className='k-tab-quotations'>经典语录</footer>
+            {/* <footer className='k-tab-quotations'>经典语录</footer> */}
             {
                 loginModalVisible && (
                     <LoginModal
