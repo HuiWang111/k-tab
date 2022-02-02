@@ -22,7 +22,8 @@
         "baseUrl": "src",
         "isolatedModules": true,
         "types": [
-            "chrome"
+            "chrome",
+            "node"
         ]
     },
     "include": [

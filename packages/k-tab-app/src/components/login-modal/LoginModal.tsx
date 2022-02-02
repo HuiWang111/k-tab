@@ -2,12 +2,13 @@
  * @Autor: hui.wang
  * @Date: 2022-01-31 15:58:31
  * @LastEditors: hui.wang
- * @LastEditTime: 2022-01-31 17:23:00
+ * @LastEditTime: 2022-02-02 13:53:30
  * @emial: hui.wang@bizfocus.cn
  */
 import { FC } from 'react'
-import { Modal, ModalProps } from 'antd'
-import { IconFont } from '../icon/Icon'
+import { ModalProps } from 'antd'
+import { IconFont } from '../iconfont/IconFont'
+import { BaseModal } from '../base-modal/BaseModal'
 import './styles.less'
 
 interface ILoginMode {
@@ -27,7 +28,7 @@ export const LoginModal: FC<ILoginModalProps> = ({
     ...restProps
 }: ILoginModalProps) => {
     return (
-        <Modal
+        <BaseModal
             {...restProps}
             title={null}
             footer={null}
@@ -48,6 +49,6 @@ export const LoginModal: FC<ILoginModalProps> = ({
                     })
                 }
             </main>
-        </Modal>
+        </BaseModal>
     )
 }

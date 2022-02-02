@@ -7,7 +7,7 @@
         "newtab": "index.html"
     },
     "content_security_policy": {
-        "extension_pages": "script-src 'self'; object-src 'self'"
+        "extension_pages": "script-src 'self' http://localhost:3001; object-src 'self'"
     },
     "permissions": [
         "bookmarks",

@@ -2,11 +2,11 @@
  * @Autor: hui.wang
  * @Date: 2022-01-31 11:27:01
  * @LastEditors: hui.wang
- * @LastEditTime: 2022-01-31 15:51:33
+ * @LastEditTime: 2022-02-02 13:45:23
  * @emial: hui.wang@bizfocus.cn
  */
 import { FC } from 'react'
-import { IconFont } from '../icon/Icon'
+import { IconFont } from '../iconfont/IconFont'
 import './styles.less'
 
 interface ISidebarProps {

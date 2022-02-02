@@ -1,0 +1,89 @@
+.k-tab-bookmark-modal {
+    .ant-modal-body {
+        height: 600px;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    &-header {
+        height: 40px;
+        background-color: #fff;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        padding: 0 70px;
+        display: flex;
+        align-items: center;
+
+        .k-tab-bookmark-modal-title {
+            font-size: 20px;
+            flex: 0 0 auto;
+        }
+        
+        .ant-input {
+            flex: 0 0 200px;
+            margin-left: 40px;
+            background-color: var(--background-color);
+        }
+    }
+
+    &-body {
+        display: flex;
+        height: calc(100% - 40px);
+        margin-top: 40px;
+        overflow: hidden;
+
+        .k-tab-bookmark-modal-folders {
+            flex: 0 0 160px;
+            background-color: #fff;
+            overflow-x: hidden;
+            overflow-y: auto;
+
+            .k-tab-bookmark-modal-folder {
+                padding: 10px 20px;
+                font-size: 14px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                cursor: pointer;
+
+                &.active {
+                    background-color: var(--primary-color);
+                    color: #fff;
+                }
+
+                &:not(.active):hover {
+                    color: var(--primary-color);
+                }
+            }
+        }
+
+        .k-tab-bookmark-modal-bookmarks {
+            flex: 1;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding: 18px;
+
+            .k-tab-bookmark-modal-bookmark {
+                display: flex;
+                padding: 16px;
+                justify-content: space-between;
+                box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+                background-color: #fff;
+                border-radius: var(--border-radius-base);
+            }
+        }
+
+        .k-tab-bookmark-modal-not-extension {
+            text-align: center;
+            flex: 1;
+            overflow: hidden;
+
+            span {
+                display: block;
+                margin-top: 50px;
+            }
+        }
+    }
+}

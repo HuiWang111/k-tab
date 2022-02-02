@@ -2,11 +2,13 @@
  * @Autor: hui.wang
  * @Date: 2022-01-29 21:52:17
  * @LastEditors: hui.wang
- * @LastEditTime: 2022-02-01 19:59:35
+ * @LastEditTime: 2022-02-02 19:51:40
  * @emial: hui.wang@bizfocus.cn
  */
 import { FC } from 'react'
-import { SearchBox, DateTime, Sidebar, LoginModal } from 'components'
+import {
+    SearchBox, DateTime, Sidebar, LoginModal, BookmarkModal
+} from 'components'
 import { observer } from 'mobx-react-lite'
 import { useServices, useMount, useVisible } from 'hooks'
 import { A11y, Mousewheel } from 'swiper'
@@ -79,6 +81,17 @@ export const Home: FC = observer(() => {
                     />
                 )
             }
+            <BookmarkModal
+                folders={[
+                    { title: '个人', id: 1 },
+                    { title: '比孚', id: 2 },
+                    { title: '书签栏', id: 3 }
+                ]}
+                bookmarks={[]}
+                onFolderChange={() => { /**/ }}
+                // isExtension={chromeService.getIsExtension()}
+                isExtension={true}
+            />
         </div>
     )
 })

@@ -2,7 +2,7 @@
  * @Autor: hui.wang
  * @Date: 2022-02-01 19:37:38
  * @LastEditors: hui.wang
- * @LastEditTime: 2022-02-01 21:45:23
+ * @LastEditTime: 2022-02-02 19:12:19
  * @emial: hui.wang@bizfocus.cn
  */
 import { AppStore } from 'stores'
@@ -18,7 +18,11 @@ export class ChromeService {
                 this.stores.chrome.setBookmarks(subTree[0].children || [])
             }
         } catch (e) {
-            console.error(e)
+            // do nothing ignore not chrome extension error
         }
+    }
+
+    getIsExtension(): boolean {
+        return this.stores.chrome.isExtension
     }
 }
