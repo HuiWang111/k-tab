@@ -2,7 +2,7 @@
  * @Autor: hui.wang
  * @Date: 2022-02-02 13:46:43
  * @LastEditors: hui.wang
- * @LastEditTime: 2022-02-03 15:01:26
+ * @LastEditTime: 2022-02-03 21:21:09
  * @emial: hui.wang@bizfocus.cn
  */
 import { FC, PropsWithChildren, useState } from 'react'
@@ -13,11 +13,15 @@ import './styles.less'
 
 interface IBaseModalProps extends Omit<ModalProps, 'width'> {
     draggable?: boolean;
+    beforeMaximize?: () => void;
+    beforeUnmaximize?: () => void;
 } 
 
 export const BaseModal: FC<PropsWithChildren<IBaseModalProps>> = ({
     children,
     className,
+    beforeMaximize,
+    beforeUnmaximize,
     ...restProps
 }: PropsWithChildren<IBaseModalProps>) => {
     const [maximized, setMaximized] = useState(false)
@@ -37,19 +41,22 @@ export const BaseModal: FC<PropsWithChildren<IBaseModalProps>> = ({
             wrapClassName='k-tab-base-modal-wrap'
         >
             <div className='k-tab-base-modal-operation'>
-                <span className='icon-wrapper' title='放大/缩小'>
+                <span
+                    className='icon-wrapper' title='放大/缩小'
+                    onClick={async () => {
+                        if (maximized) {
+                            beforeUnmaximize?.()
+                            setMaximized(false)
+                        } else {
+                            beforeMaximize?.()
+                            setMaximized(true)
+                        }
+                    }}
+                >
                     {
                         maximized
-                            ? (
-                                <FullscreenExitOutlined
-                                    onClick={() => setMaximized(false)}
-                                />
-                            )
-                            : (
-                                <FullscreenOutlined
-                                    onClick={() => setMaximized(true)}
-                                />
-                            )
+                            ? <FullscreenExitOutlined />
+                            : <FullscreenOutlined />
                     }
                 </span>
                 <span className='icon-wrapper close-icon-wrapper' title='关闭'>
@@ -60,6 +67,10 @@ export const BaseModal: FC<PropsWithChildren<IBaseModalProps>> = ({
                 </span>
             </div>
             { children }
+            <div className='left-resize col-resize'></div>
+            <div className='right-resize col-resize'></div>
+            <div className='top-resize row-resize'></div>
+            <div className='bottom-resize row-resize'></div>
         </Modal>
     )
 }

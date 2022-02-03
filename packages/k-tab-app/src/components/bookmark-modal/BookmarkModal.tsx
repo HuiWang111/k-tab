@@ -2,7 +2,7 @@
  * @Autor: hui.wang
  * @Date: 2022-02-02 16:21:21
  * @LastEditors: hui.wang
- * @LastEditTime: 2022-02-03 15:33:08
+ * @LastEditTime: 2022-02-03 20:43:13
  * @emial: hui.wang@bizfocus.cn
  */
 import { FC, useState } from 'react'
@@ -34,7 +34,7 @@ export const BookmarkModal: FC<IBookmarkModalProps> = ({
     const [activeFolderId, setActiveFolderId] = useState<number>(folders.length ? folders[0].id : 0)
     const [isEdit, setIsEdit] = useState(false)
     
-    const [modalRender, draggableElement] = useDraggableModalRender(
+    const [modalRender, draggableElement, resetBounds] = useDraggableModalRender(
         <div className='k-tab-bookmark-modal-title'>
             书签管理
         </div>
@@ -46,6 +46,9 @@ export const BookmarkModal: FC<IBookmarkModalProps> = ({
             {...restProps}
             {...modalRender}
             visible={true}
+            beforeMaximize={() => {
+                resetBounds()
+            }}
         >
             <header className='k-tab-bookmark-modal-header'>
                 { draggableElement }

@@ -6,8 +6,9 @@
     .k-tab-base-modal {
         padding-bottom: 0;
         border-radius: var(--border-radius-base);
-        overflow: hidden;
         top: 0px;
+        height: 600px;
+        resize: both;
         
         &-fullpage {
             width: 100%!important;
@@ -19,6 +20,15 @@
             margin: 0!important;
             max-width: 100%!important;
             background-color: var(--background-color);
+
+            .ant-modal-content {
+                width: 100%!important;
+            }
+        }
+
+        .react-draggable {
+            width: 100%;
+            height: 100%;
         }
     
         .ant-modal-content {
@@ -60,6 +70,36 @@
                         color: #fff;
                     }
                 }
+            }
+        }
+
+        .col-resize {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            cursor: col-resize;
+
+            &.left-resize {
+                left: 0;
+            }
+            &.right-resize {
+                right: 0;
+            }
+        }
+
+        .row-resize {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            cursor: row-resize;
+
+            &.top-resize {
+                top: 0;
+            }
+            &.bottom-resize {
+                bottom: 0;
             }
         }
     }
