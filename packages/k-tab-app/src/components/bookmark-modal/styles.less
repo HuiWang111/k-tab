@@ -19,6 +19,7 @@
         .k-tab-bookmark-modal-title {
             font-size: 20px;
             flex: 0 0 auto;
+            cursor: move;
         }
         
         .ant-input {
@@ -67,11 +68,54 @@
 
             .k-tab-bookmark-modal-bookmark {
                 display: flex;
-                padding: 16px;
+                padding: 8px;
                 justify-content: space-between;
                 box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
                 background-color: #fff;
                 border-radius: var(--border-radius-base);
+
+                & + .k-tab-bookmark-modal-bookmark {
+                    margin-top: 10px;
+                }
+
+                .bookmark-info {
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+
+                    .bookmark-title {
+                        span {
+                            display: flex;
+                            min-height: 32px;
+                            align-items: center;
+                        }
+                    }
+
+                    .bookmark-address {
+                        margin-left: 10px;
+                    }
+                }
+
+                &:hover .bookmark-operation {
+                    display: block;
+                }
+
+                .bookmark-operation {
+                    flex: 0 0 120px;
+                    margin-left: 10px;
+                    display: none;
+
+                    .plus-button {
+                        background-color: var(--warning-color);
+                        border-color: var(--warning-color);                       
+                    }
+                    .edit-button {
+                        margin-left: 10px;
+                    }
+                    .delete-button {
+                        margin-left: 10px;
+                    }
+                }
             }
         }
 

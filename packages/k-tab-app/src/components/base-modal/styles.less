@@ -1,57 +1,64 @@
-.k-tab-base-modal {
-    padding-bottom: 0;
-    border-radius: var(--border-radius-base);
-    overflow: hidden;
-    
-    &-fullpage {
-        width: 100%!important;
-        height: 100%!important;
-        left: 0!important;
-        top: 0!important;
-        right: 0!important;
-        bottom: 0!important;
-        margin: 0!important;
-        max-width: 100%!important;
-        background-color: var(--background-color);
-    }
+.k-tab-base-modal-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    .ant-modal-content {
-        height: 100%!important;
-        background-color: var(--background-color);
-
-        .ant-modal-body {
+    .k-tab-base-modal {
+        padding-bottom: 0;
+        border-radius: var(--border-radius-base);
+        overflow: hidden;
+        top: 0px;
+        
+        &-fullpage {
+            width: 100%!important;
+            height: 100%!important;
+            left: 0!important;
+            top: 0!important;
+            right: 0!important;
+            bottom: 0!important;
+            margin: 0!important;
+            max-width: 100%!important;
             background-color: var(--background-color);
         }
-    }
-
-    &-operation {
-        position: absolute;
-        right: 0;
-        top: 0;
-        z-index: 10;
-
-        .icon-wrapper {
-            display: inline-block;
-            width: 40px;
-            height: 30px;
-            line-height: 30px;
-            text-align: center;
-            cursor: pointer;
-            color: #333;
-
-            .anticon {
-                font-size: 18px;
-                vertical-align: middle;
+    
+        .ant-modal-content {
+            height: 100%!important;
+            background-color: var(--background-color);
+    
+            .ant-modal-body {
+                background-color: var(--background-color);
             }
-
-            &:hover {
-                background-color: #a2a2a2;
-            }
-
-            &.close-icon-wrapper {
+        }
+    
+        &-operation {
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 10;
+    
+            .icon-wrapper {
+                display: inline-block;
+                width: 40px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                cursor: pointer;
+                color: #333;
+    
+                .anticon {
+                    font-size: 18px;
+                    vertical-align: middle;
+                }
+    
                 &:hover {
-                    background-color: var(--error-color);
-                    color: #fff;
+                    background-color: #a2a2a2;
+                }
+    
+                &.close-icon-wrapper {
+                    &:hover {
+                        background-color: var(--error-color);
+                        color: #fff;
+                    }
                 }
             }
         }
