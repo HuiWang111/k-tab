@@ -2,14 +2,14 @@
  * @Autor: hui.wang
  * @Date: 2022-01-30 21:08:23
  * @LastEditors: hui.wang
- * @LastEditTime: 2022-01-31 17:25:53
+ * @LastEditTime: 2022-02-04 21:01:42
  * @emial: hui.wang@bizfocus.cn
  */
 import { createConnection } from 'typeorm'
 import { mysql, server, github } from './config'
-// import { Services } from './service'
+import { Services } from './services'
 
-// const services = new Services(mysql.db)
+const services = new Services()
 
 const initialize = async (): Promise<void> => {
     const connection = await createConnection({
@@ -33,7 +33,7 @@ const serverPort = server.port
 
 export {
     serverPort,
-    // services,
+    services,
     initialize
 }
 

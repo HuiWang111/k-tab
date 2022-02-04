@@ -2,44 +2,28 @@
  * @Autor: hui.wang
  * @Date: 2022-01-30 21:22:16
  * @LastEditors: hui.wang
- * @LastEditTime: 2022-02-01 15:48:37
+ * @LastEditTime: 2022-02-04 21:04:22
  * @emial: hui.wang@bizfocus.cn
  */
 import * as Router from 'koa-router'
-import axios from 'axios'
+import { AxiosInstance } from 'axios'
 import { githubConfig } from '../appconfig'
-import { URLMergeQuery } from '../utils'
-
-export const AuthController = (router: Router): void => {
+import { AuthService } from '../services/AuthService'
+ 
+export const AuthController = (authService: AuthService<AxiosInstance>, router: Router): void => {
     router.post('/oauth/redirect', async (ctx) => {
         const { code } = ctx.request.body
         
         // TODO: 总是提示 read ECONNRESET
         try {
-            const tokenResponse = await axios({
-                method: 'POST',
-                url: URLMergeQuery(
-                    'https://github.com/login/oauth/access_token',
-                    {
-                        'client_id': githubConfig.clientId,
-                        'client_secret': githubConfig.clientSecret,
-                        'code': code
-                    }
-                ),
-                headers: {
-                    accept: 'application/json'
-                }
-            })
+            const tokenResponse = await authService.getGithubToken(
+                githubConfig.clientId,
+                githubConfig.clientSecret,
+                code
+            )
             const accessToken = tokenResponse.data.access_token
             
-            const res = await axios({
-                method: 'get',
-                url: `https://api.github.com/user`,
-                headers: {
-                  accept: 'application/json',
-                  Authorization: `token ${accessToken}`
-                }
-            })
+            const res = await authService.getGithubUser(accessToken)
             
             ctx.status = 200
             ctx.body = res.data
