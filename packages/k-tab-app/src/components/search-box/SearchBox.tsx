@@ -2,7 +2,7 @@
  * @Autor: hui.wang
  * @Date: 2022-01-30 08:43:16
  * @LastEditors: hui.wang
- * @LastEditTime: 2022-02-02 13:45:25
+ * @LastEditTime: 2022-02-05 21:20:51
  * @emial: hui.wang@bizfocus.cn
  */
 import { FC, useState } from 'react'
@@ -30,7 +30,9 @@ export const SearchBox: FC<ISearchBoxProps> = ({
     })
 
     const handleSearch = () => {
-        window.open(engine.href + keyword)
+        if (keyword) {
+            window.open(engine.href + keyword)
+        }
     }
 
     useEnter(handleSearch, [keyword])

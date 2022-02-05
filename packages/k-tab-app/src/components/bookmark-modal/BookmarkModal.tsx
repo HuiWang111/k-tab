@@ -2,7 +2,7 @@
  * @Autor: hui.wang
  * @Date: 2022-02-02 16:21:21
  * @LastEditors: hui.wang
- * @LastEditTime: 2022-02-03 20:43:13
+ * @LastEditTime: 2022-02-05 21:18:43
  * @emial: hui.wang@bizfocus.cn
  */
 import { FC, useState } from 'react'
@@ -45,7 +45,6 @@ export const BookmarkModal: FC<IBookmarkModalProps> = ({
             className='k-tab-bookmark-modal'
             {...restProps}
             {...modalRender}
-            visible={true}
             beforeMaximize={() => {
                 resetBounds()
             }}
