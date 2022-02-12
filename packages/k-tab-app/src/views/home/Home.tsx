@@ -2,24 +2,30 @@
  * @Autor: hui.wang
  * @Date: 2022-01-29 21:52:17
  * @LastEditors: hui.wang
- * @LastEditTime: 2022-02-02 19:51:40
+ * @LastEditTime: 2022-02-12 20:34:56
  * @emial: hui.wang@bizfocus.cn
  */
 import { FC } from 'react'
 import {
-    SearchBox, DateTime, Sidebar, LoginModal, BookmarkModal
+    SearchBox, DateTime, Sidebar, LoginModal, BookmarkModal, SettingDrawer
 } from 'components'
 import { observer } from 'mobx-react-lite'
-import { useServices, useMount, useVisible } from 'hooks'
+import { useServices, useMount, useVisible, useCssVariables } from 'hooks'
 import { A11y, Mousewheel } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { URLMergeQuery, parseCurrentQuery } from 'utils'
+import { ConfigContext, ThemeContext } from 'app'
 import 'swiper/css'
 import './styles.less'
 
 export const Home: FC = observer(() => {
     const { searchService, authService, chromeService } = useServices()
     const [loginModalVisible, showLoginModal, hideLoginModal] = useVisible(false)
+    const [settingDarwerVisible, showSettingDrawer, hideSettingDrawer] = useVisible()
+    const {
+        iconSize,
+        setIconSize
+    } = useCssVariables()
 
     useMount(() => {
         searchService.fetchEngines()
@@ -41,7 +47,7 @@ export const Home: FC = observer(() => {
             <Sidebar
                 onLogin={showLoginModal}
                 onSetting={() => {
-                    // 
+                    showSettingDrawer()
                 }}
             />
             <DateTime />
@@ -91,6 +97,15 @@ export const Home: FC = observer(() => {
                 onFolderChange={() => { /**/ }}
                 // isExtension={chromeService.getIsExtension()}
                 isExtension={true}
+            />
+            <SettingDrawer
+                iconSize={iconSize}
+                onIconSizeChange={setIconSize}
+                visible={settingDarwerVisible}
+                maskClosable
+                onClose={hideSettingDrawer}
+                closable={false}
+                width={420}
             />
         </div>
     )

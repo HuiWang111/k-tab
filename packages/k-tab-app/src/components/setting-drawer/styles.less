@@ -1,0 +1,74 @@
+.k-tab-setting-drawer {
+    .ant-drawer-body {
+        background-color: var(--background-color);
+        padding: 0;
+
+        .ant-tabs > .ant-tabs-nav {
+            background-color: #fff;
+            box-shadow: 0 5px 5px #0000000d;
+
+            .k-tab-setting-drawer-tab-item {
+                display: flex;
+                flex-direction: column;
+
+                .anticon {
+                    font-size: 24px;
+                    margin-right: 0;
+                }
+
+                .tab-item-text {
+                    font-size: 12px;
+                    margin-top: 5px;
+                }
+            }
+        }
+
+        .ant-tabs-content-holder {
+            padding: 20px;
+
+            .ant-collapse {
+                background-color: #fff;
+                border: none;
+                border-radius: 4px;
+
+                .ant-collapse-item {
+                    border-radius: 4px;
+                    border-bottom: none;
+
+                    .ant-collapse-header {
+                        .k-tab-setting-drawer-collapse {
+                            p {
+                                margin-bottom: 0px;
+                            }
+
+                            .setting-name {
+                                font-size: 14px;
+                                font-weight: 600;
+                                color: var(--text-color);
+                            }
+
+                            .setting-desc {
+                                font-size: 12px;
+                                color: var(--text-color-secondary);
+                            }
+                        }
+                    }
+
+                    .setting-row {
+                        display: flex;
+                        align-items: center;
+
+                        .setting-name {
+                            flex: 0 0 auto;
+                            margin-right: 20px;
+                        }
+    
+                        .setting-content {
+                            flex: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
